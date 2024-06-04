@@ -1,0 +1,65 @@
+Rotate Array in Java
+
+
+You may have been using Java for a while. Do you think a simple Java array question
+can be a challenge? Let’s use the following problem to test.
+Problem: Rotate an array of n elements to the right by k steps. For example, with n
+= 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
+How many different ways do you know to solve this problem?
+
+Solution 1 - Intermediate Array:
+Space is O(n) and time is O(n).
+copy elements of arr 1 to new array and make it rotated
+
+Solution 2 - Bubble Rotate
+n O(1) space. 
+However, the time is O(n*k).
+
+Solution 3 - Reversal Algorithm
+O(1) space and in O(n) time
+
+test cases:
+
+public class TestRotateSolution {
+    @Test
+    public void testRotateSolution1() {
+        int[] arr1 = {1, 2, 3, 4, 5};
+        int n1 = arr1.length;
+        int k1 = 2;
+        rotateSolution1(arr1, n1, k1);
+        Assert.assertArrayEquals(new int[]{4, 5, 1, 2, 3}, arr1);
+
+        int[] arr2 = {6, 7, 8, 9, 10};
+        int n2 = arr2.length;
+        int k2 = 3;
+        rotateSolution1(arr2, n2, k2);
+        Assert.assertArrayEquals(new int[]{8, 9, 10, 6, 7}, arr2);
+
+        int[] arr3 = {11, 12, 13, 14, 15};
+        int n3 = arr3.length;
+        int k3 = 1;
+        rotateSolution1(arr3, n3, k3);
+        Assert.assertArrayEquals(new int[]{15, 11, 12, 13, 14}, arr3);
+
+        int[] arr4 = {};
+        int n4 = arr4.length;
+        int k4 = 1;
+        rotateSolution1(arr4, n4, k4);
+        Assert.assertArrayEquals(new int[]{}, arr4);
+
+        // Edge case: k is 0
+        int[] arr5 = {1, 2, 3, 4, 5};
+        int n5 = arr5.length;
+        int k5 = 0;
+        rotateSolution1(arr5, n5, k5);
+        Assert.assertArrayEquals(new int[]{1, 2, 3, 4, 5}, arr5);
+
+        // Edge case: k is greater than n
+        int[] arr6 = {1, 2, 3, 4, 5};
+        int n6 = arr6.length;
+        int k6 = 6;
+        rotateSolution1(arr6, n6, k6);
+        Assert.assertArrayEquals(new int[]{1, 2, 3, 4, 5}, arr6);
+    }
+
+}
