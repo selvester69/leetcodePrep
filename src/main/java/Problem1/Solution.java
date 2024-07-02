@@ -2,6 +2,8 @@ package src.main.java.Problem1;
 
 import java.util.Arrays;
 
+import src.main.util.Util;
+
 public class Solution {
 
     // using new array
@@ -42,6 +44,7 @@ public class Solution {
         // print(arr);
     }
 
+    // this Solution is for right rotation
     public static void rotateSolution3(int[] arr, int k) {
         int n = arr.length;
         if (n <= 0 || k < 0)
@@ -77,5 +80,41 @@ public class Solution {
         rotateSolution1(new int[] { 1, 2, 3, 4, 5, 6, 7 }, k);
         rotateSolution2(new int[] { 1, 2, 3, 4, 5, 6, 7 }, k);
         rotateSolution3(new int[] { 1, 2, 3, 4, 5, 6, 7 }, k);
+    }
+
+    public void jugglingAlgoLeft(int[] arr, int n, int d) {
+
+        for (int i = 0; i < Util.gcd(n, d); i++) {
+            int j = i, temp = arr[j], k = 0;
+
+            while (true) {
+                k = j + d;
+                if (k >= n)
+                    k -= n;
+                if (k == i)
+                    break;
+                arr[j] = arr[k];
+                j = k;
+            }
+            arr[j] = temp;
+        }
+        Util.print1D_intArr(arr);
+    }
+
+    public void jugglingAlgoRight(int[] arr, int n, int d) {
+        for (int i = 0; i < Util.gcd(n, d); i++) {
+
+            int j = n - 1, temp = arr[j], k = 0;
+            while (true) {
+                k = j - d - i;
+                if (k < 0)
+                    k = k + n;
+                if (k == n - i)
+                    break;
+                arr[j] = arr[k];
+                j = k;
+            }
+            arr[j] = temp;
+        }
     }
 }
